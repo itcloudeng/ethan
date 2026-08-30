@@ -113,6 +113,24 @@ const Q=[
 ["design","If a scientist changes light intensity and measures plant height, the IV is:","light intensity",["plant height","centimeters","the graph title"],"Light intensity is the changed factor."],
 ["design","If a scientist changes light intensity and measures plant height, the DV is:","plant height",["light intensity","lumens","the x-axis"],"Plant height is the measured result."],
 
+["design","SCENARIO — Fertilizer and bean plants: A student uses 40 bean plants of the same type. All plants get the same soil, pot size, water, and light. Half receive fertilizer and half receive no fertilizer. After 4 weeks, the student measures plant height. What is the independent variable?","whether the plants receive fertilizer",["plant height after 4 weeks","amount of water","type of bean plant"],"The independent variable is the factor purposely changed: fertilizer versus no fertilizer.","scenario"],
+["design","SCENARIO — Fertilizer and bean plants: A student uses 40 bean plants of the same type. All plants get the same soil, pot size, water, and light. Half receive fertilizer and half receive no fertilizer. After 4 weeks, the student measures plant height. What is the dependent variable?","plant height after 4 weeks",["whether fertilizer is given","amount of soil","type of bean plant"],"The dependent variable is what is measured: plant height after 4 weeks.","scenario"],
+["design","SCENARIO — Fertilizer and bean plants: A student uses 40 bean plants of the same type. All plants get the same soil, pot size, water, and light. Half receive fertilizer and half receive no fertilizer. After 4 weeks, the student measures plant height. Which is the control group?","the plants that receive no fertilizer",["the plants that receive fertilizer","all 40 plants together","the tallest plants"],"The control group does not receive the treatment being tested.","scenario"],
+["design","SCENARIO — Fertilizer and bean plants: Which is a constant?","amount of water",["whether fertilizer is given","plant height after 4 weeks","receiving fertilizer"],"Water is kept the same for both groups, so it is a constant.","scenario"],
+["design","SCENARIO — Fertilizer and bean plants: Which is the best hypothesis?","If bean plants receive fertilizer, then they will grow taller because fertilizer provides nutrients that can support plant growth.",["If plants grow taller, then they will receive fertilizer because fertilizer is a variable.","Bean plants with fertilizer might grow.","If fertilizer is used, then plants change because plants are living things."],"The best choice follows the packet's if...then...because format and gives a testable prediction with a reason.","scenario"],
+
+["design","SCENARIO — Antibiotic and bacteria: A student grows the same species of bacteria on identical agar plates. Half of the plates receive an antibiotic disk and half receive a plain paper disk. All plates are kept at the same temperature for the same amount of time. The student measures the amount of bacterial growth. What is the independent variable?","whether the plate receives an antibiotic disk",["amount of bacterial growth","incubation temperature","species of bacteria"],"The independent variable is the factor deliberately changed: antibiotic versus no antibiotic.","scenario"],
+["design","SCENARIO — Antibiotic and bacteria: A student grows the same species of bacteria on identical agar plates. Half receive an antibiotic disk and half receive a plain paper disk. The student measures bacterial growth. What is the dependent variable?","amount of bacterial growth",["whether antibiotic is present","type of agar plate","incubation temperature"],"Bacterial growth is the measured result, so it is the dependent variable.","scenario"],
+["design","SCENARIO — Antibiotic and bacteria: Which is the control group?","the plates with the plain paper disk",["the plates with the antibiotic disk","all plates with bacteria","the plates with the least growth"],"The plain-disk group does not receive the antibiotic treatment.","scenario"],
+["design","SCENARIO — Antibiotic and bacteria: Which is a constant?","the species of bacteria",["whether antibiotic is present","amount of bacterial growth","antibiotic versus plain disk"],"The same species is used on all plates, so it is a constant.","scenario"],
+["design","SCENARIO — Antibiotic and bacteria: Which is the best hypothesis?","If bacteria are exposed to an antibiotic, then there will be less bacterial growth because the antibiotic can inhibit bacterial growth.",["If bacteria grow less, then antibiotics will appear because bacteria are small.","Antibiotics probably affect bacteria.","If an antibiotic is added, then something will happen because it is medicine."],"This choice uses if...then...because and makes a measurable prediction.","scenario"],
+
+["design","SCENARIO — Exercise and heart rate: A student wants to test whether exercise affects heart rate. The same 20 students have their heart rates measured after sitting quietly for 10 minutes and again after doing jumping jacks for 2 minutes. Heart rate is counted in beats per minute. What is the independent variable?","resting versus exercising",["heart rate in beats per minute","number of students","how heart rate is counted"],"The activity condition, resting versus exercising, is what is changed.","scenario"],
+["design","SCENARIO — Exercise and heart rate: The same students have heart rates measured after resting and after 2 minutes of jumping jacks. What is the dependent variable?","heart rate in beats per minute",["resting versus exercising","length of the exercise","number of students"],"Heart rate is the measured outcome.","scenario"],
+["design","SCENARIO — Exercise and heart rate: Which condition acts as the control?","heart rate after sitting quietly",["heart rate after jumping jacks","the students with the highest heart rates","both conditions together"],"The resting condition provides the baseline for comparison.","scenario"],
+["design","SCENARIO — Exercise and heart rate: Which is a constant?","the length of the exercise period",["resting versus exercising","heart rate in beats per minute","whether students exercise"],"The exercise period is kept at 2 minutes for everyone.","scenario"],
+["design","SCENARIO — Exercise and heart rate: Which is the best hypothesis?","If students exercise for 2 minutes, then their heart rates will increase because working muscles require the body to deliver more oxygen.",["If heart rate increases, then students will exercise because exercise lasts 2 minutes.","Exercise changes heart rate.","If students exercise, then something happens because the body is active."],"This is testable, predicts the measured result, and follows if...then...because.","scenario"],
+
 /* Graphing */
 ["graph","A bar graph is used to:","compare amounts between categories",["show only microscope images","calculate magnification","identify a control group"],"The packet uses bar graphs for comparisons between categories."],
 ["graph","A line graph is used to:","measure change over time",["compare unrelated categories only","identify biotic factors","calculate total magnification"],"The packet says line graphs measure change over time."],
@@ -176,8 +194,12 @@ function logo(){return `<img class="logo" src="${LOGO}" alt="">`}
 function bank(sec){return sec==="all"?Q:Q.filter(x=>x[0]===sec)}
 function makeItem(x){let opts=sh([x[2],...x[3]]);return {sec:x[0],q:x[1],a:x[2],exp:x[4],opts}}
 function balancedTest(){
- const plan={life:6,method:5,design:6,graph:5,scope:8}, out=[];
+ const plan={life:6,method:5,graph:5,scope:8}, out=[];
  Object.entries(plan).forEach(([s,n])=>out.push(...sh(Q.filter(x=>x[0]===s)).slice(0,n).map(makeItem)));
+ // Six Experimental Design questions, with three scenario-based questions guaranteed.
+ const scenario=sh(Q.filter(x=>x[0]==="design" && x[5]==="scenario")).slice(0,3);
+ const regular=sh(Q.filter(x=>x[0]==="design" && x[5]!=="scenario")).slice(0,3);
+ out.push(...[...scenario,...regular].map(makeItem));
  return sh(out);
 }
 function home(){
@@ -188,9 +210,10 @@ function home(){
   <div class="choice" onclick="startTest()"><h3>Full Test</h3><p>30 balanced questions. No feedback until you submit.</p></div>
   <div class="choice" onclick="historyView()"><h3>Results</h3><p>Track full-test scores, section performance, and consistency.</p></div>
   <div class="choice" onclick="weakPractice()"><h3>Practice Weak Areas</h3><p>Uses concepts missed on previous full tests.</p></div>
+  <div class="choice" onclick="scenarioPractice()"><h3>Experimental Design Scenarios</h3><p>Story problems: identify IV, DV, control group, constants, and the best if...then...because hypothesis.</p></div>
  </div>
  <div class="callout"><strong>Confidence target:</strong> two consecutive full tests at 90% or higher, with every section at 80% or higher.</div>
- <p class="small muted">Practice results do not count toward the confidence target. Full Test results are saved on this browser. Question bank checked against the Unit 1 packet and review pages.</p>`;
+ <p class="small muted">Practice results do not count toward the confidence target. Full Test results are saved on this browser. Full Tests now guarantee scenario-based Experimental Design questions. Question bank checked against the Unit 1 packet and review pages.</p>`;
 }
 function practiceSetup(){
  app.innerHTML=logo()+`<h1>Practice</h1><p class="sub">Choose what to work on. You'll see feedback after every answer.</p>
@@ -202,6 +225,11 @@ function startPractice(secOverride=null){
  mode="practice"; currentSection=secOverride||document.getElementById("sec")?.value||"all";
  let n=secOverride?15:+(document.getElementById("cnt")?.value||15);
  quiz=sh(bank(currentSection)).slice(0,Math.min(n,bank(currentSection).length)).map(makeItem);idx=0;answers=[];selected=null;checked=false;question();
+}
+function scenarioPractice(){
+ mode="practice";currentSection="design";
+ quiz=sh(Q.filter(x=>x[0]==="design" && x[5]==="scenario")).map(makeItem);
+ idx=0;answers=[];selected=null;checked=false;question();
 }
 function startTest(){
  mode="test";quiz=balancedTest();idx=0;answers=[];selected=null;checked=false;question();
