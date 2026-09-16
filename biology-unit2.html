@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Gibbons Honors Biology — Unit 2 Packet 2</title>
+<style>
+:root{--bg:#f3f7f5;--card:#fff;--ink:#17231c;--muted:#647067;--line:#d9e5de;--green:#087f43;--green2:#e8f6ef;--teal:#087a74;--blue:#2457a7;--gold:#b98600;--goldbg:#fff8df;--bad:#b42318;--badbg:#fff1f0}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.45}
+.shell{width:min(920px,100%);margin:auto;padding:22px 16px 50px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 8px 28px rgba(18,48,31,.06)}
+h1{font-size:clamp(1.55rem,4.5vw,2.25rem);line-height:1.15;margin:0 0 6px}h2{font-size:1.25rem;margin:0 0 8px}h3{margin:0 0 5px}.sub,.muted{color:var(--muted)}.sub{margin:0 0 22px}.eyebrow{color:var(--green);font-size:.78rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.choice{border:1px solid var(--line);border-radius:14px;padding:17px;background:#fff;cursor:pointer;transition:.15s}.choice:hover{border-color:#86aa95;transform:translateY(-1px)}.choice p{margin:0;color:var(--muted);font-size:.92rem}.choice.wide{grid-column:1/-1}
+.btn,select{font:inherit}.btn{border:0;border-radius:11px;padding:12px 16px;font-weight:760;cursor:pointer;touch-action:manipulation}.btn:disabled{opacity:.5;cursor:not-allowed}.primary{background:var(--green);color:#fff}.secondary{background:#edf3f0;color:var(--ink)}.outline{background:#fff;border:1px solid var(--line)}.danger{color:var(--bad)}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.controls .btn{min-width:120px}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}select{border:1px solid var(--line);border-radius:10px;padding:11px;background:#fff;max-width:100%}
+.top{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap}.pill{background:#edf3f0;border-radius:999px;padding:7px 11px;font-size:.86rem;font-weight:750}.progress{height:9px;background:#e8eeea;border-radius:99px;overflow:hidden;margin:14px 0 22px}.progress>div{height:100%;background:var(--green)}
+.sectionTitle{font-size:.82rem;color:var(--green);font-weight:850;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px}.q{font-size:1.18rem;font-weight:780;margin:0 0 16px}.answers{display:grid;gap:10px}.option{width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:13px;padding:14px 15px;font-size:1rem;cursor:pointer}.option.sel{border-color:var(--green);background:var(--green2)}.option.correct{border-color:var(--green);background:var(--green2)}.option.wrong{border-color:var(--bad);background:var(--badbg)}
+.feedback{margin-top:14px;padding:12px 14px;border-radius:12px;background:#f5f8f6}.feedback.good{background:var(--green2)}.feedback.bad{background:var(--badbg)}.small{font-size:.88rem}
+.callout{border-left:4px solid var(--gold);background:var(--goldbg);padding:12px 14px;border-radius:8px;margin:14px 0}.ready{border-left-color:var(--green);background:var(--green2)}
+.reviewGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.reviewCard{border:1px solid var(--line);border-radius:14px;padding:16px}.reviewCard ul{margin:8px 0 0;padding-left:20px}.reviewCard li{margin:5px 0}.tag{display:inline-block;border-radius:999px;padding:3px 8px;background:#edf3f0;color:var(--muted);font-size:.76rem;font-weight:750;margin:0 4px 5px 0}
+.score{font-size:3rem;font-weight:850;line-height:1;margin:12px 0}.mastery{padding:14px;border:1px solid var(--line);border-radius:13px;margin:10px 0}.mastery strong{display:flex;justify-content:space-between;gap:12px}.bar{height:8px;background:#e8eeea;border-radius:99px;overflow:hidden;margin-top:8px}.bar i{display:block;height:100%;background:var(--green)}
+.history{width:100%;border-collapse:collapse;margin-top:12px}.history th,.history td{text-align:left;border-bottom:1px solid var(--line);padding:10px 6px;font-size:.92rem}.history th{color:var(--muted)}.missed{border-top:1px solid var(--line);padding:14px 0}.missed:first-child{border-top:0}
+@media(max-width:640px){body{background:#fff}.shell{padding:0}.card{min-height:100dvh;border:0;border-radius:0;box-shadow:none;padding:19px 15px 32px}.grid,.reviewGrid{grid-template-columns:1fr}.choice.wide{grid-column:auto}.option{min-height:56px}.controls{display:grid;grid-template-columns:1fr}.controls .btn{width:100%}.history th:nth-child(2),.history td:nth-child(2){display:none}}
+</style>
+</head>
+<body><div class="shell"><main class="card" id="app"></main></div>
+<script>
+const SECTIONS={
+ atoms:"Atoms & Atomic Structure",bonds:"Chemical Bonds",water:"Water & pH",building:"Building Molecules",
+ biomol:"Biomolecules",indicators:"Chemical Indicators",enzymes:"Enzymes"
+};
+const TYPES={recall:"Knowledge",apply:"Application",data:"Graph / Data"};
+// [section, type, prompt, correct answer, three distractors, explanation, packet page]
+const Q=[
+["atoms","recall","What charge does a proton have?","positive (+)",["negative (−)","neutral (0)","variable"],"Protons have a positive charge.",1],
+["atoms","recall","What charge does a neutron have?","neutral (0)",["positive (+)","negative (−)","always +2"],"Neutrons have no electrical charge.",1],
+["atoms","recall","What charge does an electron have?","negative (−)",["positive (+)","neutral (0)","always −2"],"Electrons have a negative charge.",1],
+["atoms","recall","The atomic number equals the number of:","protons",["neutrons","electron shells","bonds"],"An element is identified by its number of protons.",1],
+["atoms","recall","Changing the number of neutrons creates a different:","isotope",["ion","molecule","bond"],"Isotopes are forms of the same element with different numbers of neutrons.",1],
+["atoms","recall","Changing the number of electrons creates a(n):","ion",["isotope","element","neutron"],"An atom becomes charged when it gains or loses electrons.",1],
+["atoms","apply","An atom has 8 protons. What is its atomic number?","8",["0","4","16"],"Atomic number is the number of protons.",1],
+["atoms","apply","Two atoms each have 6 protons, but one has 6 neutrons and the other has 8. They are:","isotopes of the same element",["different elements","oppositely charged ions","identical molecules"],"They are the same element because they have the same protons, but different isotopes because their neutrons differ.",1],
+["atoms","apply","A neutral atom gains one electron. It becomes:","a negatively charged ion",["a positively charged ion","a new isotope","a different element"],"Gaining a negative electron gives the atom a negative net charge.",1],
+["atoms","recall","Valence electrons are found in an atom's:","outermost energy level",["nucleus","neutron only","innermost proton layer"],"Valence electrons are the outer electrons involved in bonding.",2],
+["atoms","recall","For main-group elements, valence electrons can be found from the element's:","column or group on the periodic table",["atomic mass only","row number only","number of isotopes"],"Elements in the same main-group column have the same number of valence electrons.",2],
+
+["bonds","recall","A bond formed when electrons are transferred is:","ionic",["nonpolar covalent","polar covalent","hydrogen"],"Ionic bonds form after electrons are transferred and charged ions attract.",3],
+["bonds","recall","A bond in which electrons are shared equally is:","nonpolar covalent",["ionic","polar covalent","hydrogen"],"Equal sharing produces a nonpolar covalent bond.",3],
+["bonds","recall","A bond in which electrons are shared unequally is:","polar covalent",["ionic","nonpolar covalent","hydrogen"],"Unequal sharing creates partial charges and a polar covalent bond.",3],
+["bonds","recall","A weak attraction between separate polar molecules is a:","hydrogen bond",["ionic bond","nonpolar covalent bond","peptide bond"],"The packet identifies hydrogen bonds as weak attractions between molecules.",3],
+["bonds","apply","One atom gives an electron to another atom. Which bond is most likely to form?","ionic",["hydrogen","nonpolar covalent","polar covalent"],"Electron transfer produces oppositely charged ions that attract.",3],
+["bonds","apply","Two atoms pull equally on a shared pair of electrons. The bond is:","nonpolar covalent",["polar covalent","ionic","hydrogen"],"Equal electron sharing is nonpolar covalent.",3],
+["bonds","apply","Oxygen pulls shared electrons more strongly than hydrogen in a water molecule. The O–H bonds are:","polar covalent",["nonpolar covalent","ionic","hydrogen bonds"],"The electrons are shared unequally within each water molecule.",4],
+["bonds","apply","The attraction between the slightly positive hydrogen of one water molecule and the slightly negative oxygen of another is a:","hydrogen bond",["ionic bond","nonpolar covalent bond","peptide bond"],"Hydrogen bonds connect neighboring water molecules.",4],
+["bonds","recall","Which bonds hold hydrogen and oxygen together inside one water molecule?","polar covalent bonds",["hydrogen bonds","ionic bonds","peptide bonds"],"Water's O–H bonds share electrons unequally.",4],
+["bonds","recall","Which attractions occur between neighboring water molecules?","hydrogen bonds",["polar covalent bonds","ionic bonds","peptide bonds"],"Partial charges allow separate water molecules to attract through hydrogen bonds.",4],
+["bonds","apply","A molecule has no uneven regions of charge because its electrons are shared evenly. It is most likely:","nonpolar",["polar","an isotope","a positive ion"],"Even sharing prevents partial positive and negative ends.",3],
+
+["water","recall","Water molecules sticking to other water molecules is called:","cohesion",["adhesion","evaporative cooling","denaturation"],"Cohesion is attraction between molecules of the same substance.",5],
+["water","recall","Water sticking to a different material is called:","adhesion",["cohesion","hydrolysis","specificity"],"Adhesion is attraction between unlike substances.",5],
+["water","recall","Water resists rapid temperature change because it has:","high specific heat",["low cohesion","a neutral atomic number","no hydrogen bonds"],"High specific heat helps water absorb substantial heat before its temperature changes greatly.",5],
+["water","recall","Cooling caused when the highest-energy water molecules leave as vapor is:","evaporative cooling",["adhesion","dehydration synthesis","denaturation"],"Evaporation removes heat from the remaining liquid.",5],
+["water","apply","Water beads together on a waxed surface mainly because of:","cohesion",["adhesion","hydrolysis","ionic bonding"],"Water molecules attract one another and form droplets.",5],
+["water","apply","Water climbing the sides of a narrow plant tube involves water being attracted to the tube. This is:","adhesion",["cohesion only","denaturation","neutralization"],"Adhesion is water's attraction to another surface; cohesion also helps pull the column behind it.",5],
+["water","apply","Sweating cools the body because:","evaporating water carries away heat",["water creates more protons","adhesion breaks proteins","the skin becomes nonpolar"],"The fastest water molecules escape as vapor, lowering the average energy of the liquid left behind.",5],
+["water","apply","Large bodies of water change temperature slowly, helping nearby organisms avoid sudden temperature swings. This demonstrates:","high specific heat",["low pH","ionic transfer","hydrolysis"],"Water can absorb or release considerable heat with a relatively small temperature change.",5],
+["water","recall","A solution with pH 7 is:","neutral",["acidic","basic","always an enzyme"],"Seven is neutral on the pH scale.",6],
+["water","recall","A solution below pH 7 is:","acidic",["basic","neutral","nonpolar"],"Acids have pH values below 7.",6],
+["water","recall","A solution above pH 7 is:","basic",["acidic","neutral","an isotope"],"Bases have pH values above 7.",6],
+["water","apply","Which solution is the most acidic?","pH 2",["pH 6","pH 7","pH 11"],"The lower the pH value, the more acidic the solution.",6],
+["water","apply","Which solution is the most basic?","pH 13",["pH 2","pH 6","pH 7"],"The higher the pH value above 7, the more basic the solution.",6],
+
+["building","recall","A small molecular building block is a:","monomer",["polymer","indicator","product"],"Monomers can be joined to make larger molecules.",7],
+["building","recall","A long molecule made from repeating building blocks is a:","polymer",["monomer","proton","substrate only"],"A polymer is built from repeating monomers.",7],
+["building","recall","The reaction that joins monomers by removing water is:","dehydration synthesis",["hydrolysis","denaturation","evaporative cooling"],"Dehydration synthesis removes water as a larger molecule is built.",7],
+["building","recall","The reaction that breaks a polymer apart by adding water is:","hydrolysis",["dehydration synthesis","cohesion","ionization"],"Hydrolysis uses water to split a larger molecule.",7],
+["building","apply","Two monomers join and a water molecule is released. This is:","dehydration synthesis",["hydrolysis","denaturation","adhesion"],"Removing water while forming a bond is dehydration synthesis.",7],
+["building","apply","A digestive reaction adds water to split a large food molecule. This is:","hydrolysis",["dehydration synthesis","cohesion","evaporative cooling"],"Adding water to break a molecule is hydrolysis.",7],
+["building","apply","Which process is most directly used to build a biological polymer?","dehydration synthesis",["hydrolysis","denaturation","indicator testing"],"Dehydration synthesis links monomers into larger molecules.",7],
+["building","apply","Which process is most directly used during digestion to break polymers into monomers?","hydrolysis",["dehydration synthesis","cohesion","adhesion"],"Digestion commonly uses water to break chemical bonds in polymers.",7],
+
+["biomol","recall","The monomer of carbohydrates is a:","monosaccharide",["amino acid","nucleotide","fatty acid"],"Monosaccharides are the packet's carbohydrate building blocks.",8],
+["biomol","recall","The main function of carbohydrates is:","fast energy",["long-term genetic storage","insulation only","lowering activation energy"],"Carbohydrates provide a fast source of energy for cells.",8],
+["biomol","recall","Carbohydrates contain carbon, hydrogen, and oxygen in approximately what ratio?","1:2:1",["1:1:1","2:1:2","3:2:1"],"The packet gives the carbohydrate C:H:O ratio as 1:2:1.",8],
+["biomol","recall","The packet lists the building blocks of lipids as:","fatty acids",["amino acids","nucleotides","monosaccharides"],"Use the packet's wording: fatty acids are listed as the monomers/building blocks of lipids.",9],
+["biomol","recall","A major function of lipids is:","long-term energy storage",["fast energy only","copying DNA only","lowering every pH"],"Lipids are used for long-term energy, insulation, and cell structures.",9],
+["biomol","recall","The monomers of proteins are:","amino acids",["fatty acids","nucleotides","monosaccharides"],"Amino acids join to form proteins.",11],
+["biomol","recall","Amino acids in a protein are connected by:","peptide bonds",["hydrogen ions","ionic indicators","phosphate groups only"],"Peptide bonds join amino acids.",11],
+["biomol","recall","Proteins primarily contain which elements in the packet organizer?","CHON",["CHO","CHONP","HO only"],"The packet organizer uses carbon, hydrogen, oxygen, and nitrogen for proteins.",11],
+["biomol","recall","The monomers of nucleic acids are:","nucleotides",["amino acids","fatty acids","monosaccharides"],"DNA and RNA are made from nucleotides.",13],
+["biomol","recall","A nucleotide contains:","a sugar, phosphate group, and nitrogenous base",["glycerol and three fatty acids","only carbon and hydrogen","two amino acids"],"These are the three parts shown in the packet's nucleotide structure.",13],
+["biomol","recall","Nucleic acids contain which elements?","CHONP",["CHO","CHON","CHONS only"],"Nucleic acids contain carbon, hydrogen, oxygen, nitrogen, and phosphorus.",13],
+["biomol","recall","Examples of nucleic acids are:","DNA and RNA",["starch and glycogen","fats and oils","amylase and lipase"],"DNA and RNA are the packet's nucleic-acid examples.",13],
+["biomol","apply","A molecule provides rapid energy and is made of monosaccharides. It is a:","carbohydrate",["lipid","protein","nucleic acid"],"Monosaccharides and fast energy identify carbohydrates.",8],
+["biomol","apply","A molecule stores instructions used to build proteins. It is a:","nucleic acid",["carbohydrate","lipid","indicator"],"DNA and RNA contain genetic instructions used in protein production.",13],
+["biomol","apply","A molecule is built from amino acids and can function in transport, defense, or as an enzyme. It is a:","protein",["lipid","carbohydrate","nucleic acid"],"Amino-acid polymers with these functions are proteins.",11],
+["biomol","apply","A molecule is associated with long-term energy, insulation, and cell membranes. It is a:","lipid",["carbohydrate","protein","nucleic acid"],"Those are the packet's major lipid functions.",9],
+["biomol","recall","Hydrogen usually forms how many covalent bonds?","1",["2","3","4"],"The packet study note gives H = 1.",22],
+["biomol","recall","Oxygen usually forms how many covalent bonds?","2",["1","3","4"],"The packet study note gives O = 2.",22],
+["biomol","recall","Nitrogen usually forms how many covalent bonds?","3",["1","2","4"],"The packet study note gives N = 3.",22],
+["biomol","recall","Carbon usually forms how many covalent bonds?","4",["1","2","3"],"The packet study note gives C = 4.",22],
+
+["indicators","recall","Iodine changes from amber/brown to black/purple when which substance is present?","starch",["simple sugar","protein","lipid"],"A black/purple iodine result is positive for starch.",14],
+["indicators","recall","Benedict's solution tests for:","simple sugars",["starch","proteins","lipids"],"When heated, Benedict's changes from aqua blue toward orange for simple sugars.",14],
+["indicators","recall","A translucent spot on dry brown paper is a positive test for:","lipids",["proteins","starch","nucleic acids"],"Lipids make the dry paper translucent.",14],
+["indicators","recall","Biuret solution tests for:","proteins",["simple sugars","lipids","starch"],"Biuret changes from denim blue to lilac/purple when protein is present.",14],
+["indicators","apply","A sample turns iodine black-purple. What does the sample contain?","starch",["protein","lipid","DNA only"],"Black/purple is the packet's positive iodine result for starch.",14],
+["indicators","apply","Benedict's solution is heated with a sample and changes from aqua blue to orange. What is present?","simple sugar",["protein","starch","nucleic acid"],"Heating and an orange color indicate a positive Benedict's test.",14],
+["indicators","apply","After a food sample dries on brown paper, the paper remains translucent. What is present?","lipid",["protein","starch","simple sugar only"],"A translucent dry spot is positive for lipids.",14],
+["indicators","apply","Biuret solution changes from denim blue to lilac. What is present?","protein",["starch","lipid","simple sugar"],"Lilac/purple is a positive Biuret test for protein.",14],
+["indicators","apply","How do you know an indicator test is positive?","the expected visible color or transparency change occurs",["the sample always becomes clear","the temperature always drops","all atoms become ions"],"Each indicator has a specific visible change that signals a positive result.",14],
+["indicators","apply","A student uses Benedict's solution but does not heat the sample. Why is the result unreliable?","Benedict's test must be heated",["Benedict's only tests proteins","the sample must first be dried on paper","iodine must always be added"],"The packet specifically marks Benedict's solution as requiring heat.",14],
+
+["enzymes","recall","Enzymes are biological:","catalysts",["indicators","monomers","isotopes"],"Biological catalysts increase reaction rates in living organisms.",15],
+["enzymes","recall","Enzymes speed reactions by lowering:","activation energy",["atomic number","the number of products","all body temperatures"],"The reaction-energy diagram shows a lower activation-energy barrier with an enzyme.",15],
+["enzymes","recall","The reactant that binds to an enzyme is the:","substrate",["product","indicator","isotope"],"The substrate fits into the enzyme's active site.",15],
+["enzymes","recall","The region where a substrate binds is the:","active site",["atomic number","phosphate group","indicator scale"],"The active site has a shape complementary to its substrate.",15],
+["enzymes","recall","The molecules formed by an enzyme-controlled reaction are the:","products",["substrates","catalysts","isotopes"],"Products are released after the reaction.",15],
+["enzymes","recall","Enzymes can be used again after a reaction, so they are:","reusable",["consumed","always denatured","products"],"The enzyme is unchanged and can catalyze another reaction.",16],
+["enzymes","recall","An enzyme usually works with only certain substrates, so it is:","specific",["random","nonpolar","an isotope"],"The active site's shape makes enzyme action specific.",16],
+["enzymes","recall","A reaction that breaks a larger molecule into smaller parts is:","catabolic",["anabolic","cohesive","adhesive"],"Catabolic reactions break down molecules.",16],
+["enzymes","recall","A reaction that joins smaller molecules into a larger molecule is:","anabolic",["catabolic","acidic","evaporative"],"Anabolic reactions build molecules.",16],
+["enzymes","recall","All chemical reactions in an organism together are called:","metabolism",["cohesion","denaturation","specific heat"],"Metabolism includes both building and breakdown reactions.",15],
+["enzymes","recall","Loss of a protein's normal shape is called:","denaturation",["adhesion","hydrolysis","ionization"],"Environmental conditions can unfold an enzyme and change its active site.",16],
+["enzymes","recall","Which enzyme breaks down proteins or peptides?","protease or peptidase",["lipase","DNA polymerase","lactase only"],"Protease and peptidase are the packet's protein-digesting examples.",15],
+["enzymes","recall","Which enzyme breaks down fats?","lipase",["lactase","protease","DNA polymerase"],"Lipase acts on lipids/fats.",15],
+["enzymes","recall","Which enzyme breaks down lactose?","lactase",["lipase","protease","RNA polymerase"],"Lactase acts on lactose.",15],
+["enzymes","apply","In Protein + Protease → amino acids, the enzyme is:","protease",["protein","amino acids","the arrow"],"Enzyme names often end in -ase; protease catalyzes this breakdown.",20],
+["enzymes","apply","In Fat + Lipase → fatty acids, the substrate is:","fat",["lipase","fatty acids","oxygen"],"The substrate is the starting molecule on which the enzyme acts.",20],
+["enzymes","apply","In Lactose + Lactase → glucose + galactose, the products are:","glucose and galactose",["lactose and lactase","lactase only","water and oxygen"],"The products appear on the right side of the reaction arrow.",20],
+["enzymes","apply","Catalase changes hydrogen peroxide into:","water and oxygen",["glucose and galactose","amino acids","fatty acids"],"The packet reaction is 2H₂O₂ → 2H₂O + O₂.",15],
+["enzymes","apply","An enzyme's active site changes shape. What is the most direct result?","the substrate may no longer fit",["the atomic number increases","the enzyme becomes a lipid","more valence electrons appear"],"Enzyme function depends on the active site's shape.",16],
+["enzymes","apply","An enzyme is exposed to very high temperature and permanently unfolds. It has:","denatured",["become an isotope","performed adhesion","gained an atomic number"],"High heat can disrupt the protein's shape.",16],
+["enzymes","data","Below the optimum temperature, raising temperature generally causes enzyme reaction rate to:","increase toward the optimum",["drop immediately to zero","stay identical at all temperatures","change the enzyme into a carbohydrate"],"The temperature graph rises toward its peak or optimum.",16],
+["enzymes","data","Above the optimum temperature, the packet graph shows reaction rate:","decreasing sharply",["increasing forever","remaining flat","becoming pH 7"],"Excess heat can denature the enzyme and reduce its activity.",16],
+["enzymes","data","Why can different enzymes have different optimum pH values?","each enzyme has conditions that best preserve its active shape",["all enzymes are the same molecule","pH changes atomic numbers","substrates are always ions"],"The pH graph shows different activity peaks for pepsin, salivary amylase, and trypsin.",17],
+["enzymes","data","The packet graph places trypsin's optimum pH closest to:","pH 9",["pH 2","pH 5","pH 7"],"Trypsin's curve peaks in the basic range at about pH 9.",20],
+["enzymes","data","The packet graph places pepsin's optimum pH closest to:","pH 2",["pH 5","pH 7","pH 9"],"Pepsin's curve peaks in a strongly acidic range.",17],
+["enzymes","data","If substrate is abundant, increasing enzyme concentration causes reaction rate to:","increase",["decrease to zero","remain unchanged","reverse every reaction"],"More enzyme molecules provide more active sites that can work at the same time.",17],
+["enzymes","data","Why does reaction rate eventually level off as substrate concentration keeps increasing?","all enzyme active sites are occupied",["the atomic number changes","the substrate becomes an isotope","all products become enzymes"],"Once enzymes are saturated, extra substrate cannot be processed faster without more enzyme.",17],
+["enzymes","data","Catalase produced 28 mL at 26°C, 36 mL at 32°C, and 19 mL at 43°C. Which temperature is the optimum in these data?","32°C",["26°C","43°C","56°C"],"The greatest product amount, 36 mL, occurs at 32°C.",21],
+["enzymes","data","Catalase produced 10 mL at 12°C and 36 mL at 32°C. What conclusion is supported?","catalase worked faster at 32°C",["catalase was inactive at 32°C","12°C denatured all catalase","temperature had no effect"],"More product in the same time indicates a faster reaction.",21],
+["enzymes","data","Catalase product falls from 36 mL at 32°C to 12 mL at 50°C. What is the best packet-based explanation?","higher temperature reduced enzyme activity and may denature it",["the reaction gained more substrate","catalase became a carbohydrate","the atomic number changed"],"Past the optimum, high temperature reduces activity and can denature the enzyme.",21],
+["enzymes","apply","If more catalase is added while plenty of hydrogen peroxide is available, the reaction should initially:","speed up",["stop","reverse","produce less oxygen immediately"],"More catalase provides more active sites, so more substrate can react at once.",21],
+["enzymes","apply","What must be true of the atom counts on both sides of a balanced chemical equation?","the number of each type of atom must be equal",["the product side must have more atoms","only oxygen must match","the atoms must all be ions"],"Matter is rearranged, not created or destroyed, so each atom type must balance.",15]
+];
+
+const REVIEW=[
+ ["Atoms & bonds",["Proton +, neutron 0, electron −","Atomic number = protons; neutron change = isotope; electron change = ion","Ionic = transfer; nonpolar covalent = equal sharing; polar covalent = unequal sharing","Hydrogen bonds are weak attractions between molecules"]],
+ ["Water & pH",["Polar covalent bonds occur within water; hydrogen bonds occur between water molecules","Cohesion: water to water; adhesion: water to another surface","High specific heat slows temperature change; evaporation removes heat","Acid < 7, neutral = 7, base > 7"]],
+ ["Building molecules",["Monomer = small building block; polymer = repeating monomers","Dehydration synthesis removes water and builds","Hydrolysis adds water and breaks apart"]],
+ ["Biomolecules",["Carbohydrate: monosaccharide, CHO 1:2:1, fast energy","Lipid: fatty acids, CHO, long-term energy/insulation/cell structure","Protein: amino acids + peptide bonds, CHON, many jobs including enzymes","Nucleic acid: nucleotide, CHONP, DNA/RNA, instructions for proteins"]],
+ ["Indicator tests",["Iodine: amber/brown → black/purple = starch","Heated Benedict's: aqua blue → orange = simple sugar","Dry brown paper: opaque → translucent = lipid","Biuret: denim blue → lilac/purple = protein"]],
+ ["Enzymes",["Biological catalysts lower activation energy","Substrate binds to the active site; products are released; enzyme is reusable and specific","Catabolic breaks down; anabolic builds; together they are metabolism","Temperature, pH, enzyme concentration, and substrate concentration affect rate","Denaturation changes enzyme shape; saturation occurs when active sites are occupied"]]
+];
+
+let mode="",quiz=[],idx=0,answers=[],selected=null,checked=false,currentSection="all";
+const app=document.getElementById("app");
+const key="gibbonsBioUnit2Packet2ResultsV1";
+function sh(a){let b=[...a];for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
+function bank(sec="all",type="all"){return Q.filter(x=>(sec==="all"||x[0]===sec)&&(type==="all"||x[1]===type))}
+function makeItem(x){return {sec:x[0],type:x[1],q:x[2],a:x[3],opts:sh([x[3],...x[4]]),exp:x[5],page:x[6]}}
+function balancedTest(){
+ const plan={atoms:5,bonds:6,water:6,building:4,biomol:7,indicators:4,enzymes:8},out=[];
+ Object.entries(plan).forEach(([s,n])=>out.push(...sh(Q.filter(x=>x[0]===s)).slice(0,n).map(makeItem)));
+ // Ensure the test contains substantial application/data work.
+ let nonRecall=out.filter(x=>x.type!=="recall").length;
+ if(nonRecall<15){
+  const replacements=sh(Q.filter(x=>x[1]!=="recall"&&!out.some(y=>y.q===x[2]))).map(makeItem);
+  for(let i=0;i<out.length&&nonRecall<15;i++)if(out[i].type==="recall"){
+   const same=replacements.findIndex(r=>r.sec===out[i].sec);if(same>=0){out[i]=replacements.splice(same,1)[0];nonRecall++}
+  }
+ }
+ return sh(out);
+}
+function home(){
+ mode="";app.innerHTML=`<div class="eyebrow">Unit 2 · Packet 2</div><h1>Biochemistry Study Center</h1><p class="sub">Packet-based review and practice for atomic structure, bonding, water, biomolecules, indicators, and enzymes.</p>
+ <div class="grid">
+  <div class="choice" onclick="reviewView()"><h3>Review Guide</h3><p>Compact Packet 2 facts and relationships.</p></div>
+  <div class="choice" onclick="practiceSetup()"><h3>Practice</h3><p>Choose a topic and receive immediate explanations.</p></div>
+  <div class="choice" onclick="startTypePractice('apply')"><h3>Application Practice</h3><p>Use the facts in scenarios and experimental situations.</p></div>
+  <div class="choice" onclick="startTypePractice('data')"><h3>Graphs & Data</h3><p>Interpret enzyme curves and catalase results.</p></div>
+  <div class="choice" onclick="startTest()"><h3>Full Packet 2 Test</h3><p>40 balanced questions with no feedback until submission.</p></div>
+  <div class="choice" onclick="weakPractice()"><h3>Practice Weak Areas</h3><p>Targets topics missed on recent full tests.</p></div>
+  <div class="choice wide" onclick="historyView()"><h3>Results & Readiness</h3><p>Track full-test scores, topic performance, and consistency.</p></div>
+ </div>
+ <div class="callout"><strong>Scope:</strong> Unit 2 Packet 2 only. Unit 1 and Packet 1 are intentionally excluded.</div>`;
+}
+function reviewView(){
+ app.innerHTML=`<div class="eyebrow">Unit 2 · Packet 2</div><h1>Review Guide</h1><p class="sub">Short, packet-focused reminders. Practice questions add the next reasoning step.</p>
+ <div class="reviewGrid">${REVIEW.map(([h,items])=>`<section class="reviewCard"><h2>${esc(h)}</h2><ul>${items.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></section>`).join("")}</div>
+ <div class="controls"><button class="btn primary" onclick="practiceSetup()">Practice These Topics</button><button class="btn secondary" onclick="home()">Home</button></div>`;
+}
+function practiceSetup(){
+ app.innerHTML=`<div class="eyebrow">Unit 2 · Packet 2</div><h1>Practice Setup</h1><p class="sub">Choose a topic, question style, and length.</p>
+ <div class="row"><select id="sec"><option value="all">All Packet 2 Topics</option>${Object.entries(SECTIONS).map(([k,v])=>`<option value="${k}">${v}</option>`).join("")}</select>
+ <select id="typ"><option value="all">All Question Styles</option>${Object.entries(TYPES).map(([k,v])=>`<option value="${k}">${v}</option>`).join("")}</select>
+ <select id="cnt"><option>10</option><option selected>15</option><option>20</option><option>30</option></select></div>
+ <div class="controls"><button class="btn primary" onclick="startPractice()">Start Practice</button><button class="btn secondary" onclick="home()">Back</button></div>`;
+}
+function startPractice(secOverride=null,typeOverride=null){
+ mode="practice";currentSection=secOverride||document.getElementById("sec")?.value||"all";
+ const type=typeOverride||document.getElementById("typ")?.value||"all",available=bank(currentSection,type);
+ const n=(secOverride||typeOverride)?15:+(document.getElementById("cnt")?.value||15);
+ quiz=sh(available).slice(0,Math.min(n,available.length)).map(makeItem);idx=0;answers=[];selected=null;checked=false;
+ if(!quiz.length){practiceSetup();return}question();
+}
+function startTypePractice(type){startPractice("all",type)}
+function startTest(){mode="test";quiz=balancedTest();idx=0;answers=[];selected=null;checked=false;question()}
+function question(){
+ const x=quiz[idx],answered=answers.filter(Boolean).length;
+ app.innerHTML=`<div class="top"><span class="pill">${mode==="test"?"Full Packet 2 Test":"Practice"}</span><span class="pill">Question ${idx+1} of ${quiz.length}</span></div>
+ <div class="progress"><div style="width:${idx/quiz.length*100}%"></div></div>
+ <div class="sectionTitle">${SECTIONS[x.sec]} · ${TYPES[x.type]} · Packet p. ${x.page}</div><div class="q">${esc(x.q)}</div>
+ <div class="answers">${x.opts.map((o,i)=>`<button class="option ${selected===o?"sel":""}" onclick="pick(${i})">${String.fromCharCode(65+i)}. ${esc(o)}</button>`).join("")}</div><div id="fb"></div>
+ <div class="controls">${mode==="practice"?`<button id="check" class="btn primary" onclick="checkPractice()" ${selected===null?"disabled":""}>Check Answer</button>`:`<button class="btn secondary" onclick="prev()" ${idx===0?"disabled":""}>Previous</button><button class="btn primary" onclick="nextTest()">${idx===quiz.length-1?"Review & Submit":"Next"}</button>`}<button class="btn outline" onclick="home()">Quit</button></div>
+ ${mode==="test"?`<p class="small muted">${answered} of ${quiz.length} answered. Answers can be changed before submission.</p>`:""}`;
+ if(mode==="test"&&answers[idx]){selected=answers[idx].choice;highlightSelected()}
+}
+function highlightSelected(){[...document.querySelectorAll(".option")].forEach((b,i)=>b.classList.toggle("sel",quiz[idx].opts[i]===selected))}
+function pick(i){if(mode==="practice"&&checked)return;selected=quiz[idx].opts[i];highlightSelected();const c=document.getElementById("check");if(c)c.disabled=false;if(mode==="test")answers[idx]={choice:selected}}
+function checkPractice(){
+ if(selected===null)return;checked=true;const x=quiz[idx],ok=selected===x.a;answers[idx]={choice:selected,ok};
+ [...document.querySelectorAll(".option")].forEach((b,i)=>{const o=x.opts[i];if(o===x.a)b.classList.add("correct");else if(o===selected)b.classList.add("wrong");b.disabled=true});
+ document.getElementById("fb").innerHTML=`<div class="feedback ${ok?"good":"bad"}"><strong>${ok?"Correct.":"Not quite."}</strong> ${esc(x.exp)}</div>`;
+ document.querySelector(".controls").innerHTML=`<button class="btn primary" onclick="nextPractice()">${idx===quiz.length-1?"See Results":"Next Question"}</button><button class="btn outline" onclick="home()">Quit</button>`;
+}
+function nextPractice(){if(idx===quiz.length-1)return practiceResult();idx++;selected=null;checked=false;question()}
+function practiceResult(){const n=answers.filter(a=>a?.ok).length;app.innerHTML=`<div class="eyebrow">Practice complete</div><h1>${Math.round(n/quiz.length*100)}%</h1><p>${n} of ${quiz.length} correct.</p><p class="muted">Practice is for learning and is not added to Full Test history.</p><div class="controls"><button class="btn primary" onclick="practiceSetup()">Practice Again</button><button class="btn secondary" onclick="home()">Home</button></div>`}
+function prev(){if(idx>0){idx--;selected=answers[idx]?.choice||null;question()}}
+function nextTest(){if(selected!==null)answers[idx]={choice:selected};if(idx<quiz.length-1){idx++;selected=answers[idx]?.choice||null;question()}else reviewSubmit()}
+function reviewSubmit(){
+ const unanswered=quiz.length-answers.filter(Boolean).length;
+ app.innerHTML=`<h1>Submit Full Test?</h1><p class="sub">No answers or explanations have been shown.</p><div class="callout ${unanswered?"":"ready"}"><strong>${unanswered?`${unanswered} question${unanswered>1?"s":""} unanswered.`:"All 40 questions answered."}</strong></div><div class="controls"><button class="btn primary" onclick="submitTest()">Submit Test</button><button class="btn secondary" onclick="backToLast()">Go Back</button></div>`;
+}
+function backToLast(){idx=quiz.length-1;selected=answers[idx]?.choice||null;question()}
+function submitTest(){
+ const per={},byType={};Object.keys(SECTIONS).forEach(s=>per[s]={c:0,n:0});Object.keys(TYPES).forEach(t=>byType[t]={c:0,n:0});
+ let correct=0;const missed=[];
+ quiz.forEach((x,i)=>{const choice=answers[i]?.choice||"No answer",ok=choice===x.a;per[x.sec].n++;byType[x.type].n++;if(ok){correct++;per[x.sec].c++;byType[x.type].c++}else missed.push({sec:x.sec,type:x.type,q:x.q,a:x.a,choice,exp:x.exp,page:x.page})});
+ const pct=Math.round(correct/quiz.length*100),rec={schema:1,ts:new Date().toISOString(),score:correct,total:quiz.length,pct,per,byType,missed};
+ const hist=getHist();hist.push(rec);localStorage.setItem(key,JSON.stringify(hist.slice(-50)));resultView(rec);
+}
+function getHist(){try{const x=JSON.parse(localStorage.getItem(key)||"[]");return Array.isArray(x)?x:[]}catch(e){return[]}}
+function confidence(hist=getHist()){
+ if(hist.length<2)return {ok:false,msg:`Complete ${2-hist.length} more full test${hist.length===1?"":"s"} to measure consistency.`};
+ const pass=r=>r.pct>=90&&Object.values(r.per).filter(v=>v.n).every(v=>v.c/v.n>=.75),a=hist.at(-1),b=hist.at(-2);
+ return pass(a)&&pass(b)?{ok:true,msg:"Two consecutive tests at 90%+ with every tested topic at 75%+."}:{ok:false,msg:"Target: two consecutive tests at 90%+ with every tested topic at 75%+."};
+}
+function bars(obj,labels){return Object.entries(obj).filter(([,v])=>v.n).map(([s,v])=>{const p=Math.round(v.c/v.n*100);return `<div class="mastery"><strong><span>${labels[s]}</span><span>${v.c}/${v.n} — ${p}%</span></strong><div class="bar"><i style="width:${p}%"></i></div></div>`}).join("")}
+function resultView(r){
+ const conf=confidence();app.innerHTML=`<div class="eyebrow">Full Packet 2 Test</div><h1>Test Result</h1><div class="score">${r.pct}%</div><p>${r.score} of ${r.total} correct</p>
+ <div class="callout ${conf.ok?"ready":""}"><strong>${conf.ok?"Consistent readiness demonstrated":"Keep building consistency"}</strong><br>${conf.msg}</div>
+ <h2>By topic</h2>${bars(r.per,SECTIONS)}<h2>By question style</h2>${bars(r.byType,TYPES)}
+ <div class="controls"><button class="btn primary" onclick="missedView()">Review Missed Questions</button><button class="btn secondary" onclick="startTest()">Take Another Test</button><button class="btn outline" onclick="home()">Home</button></div>`;
+}
+function missedView(){
+ const r=getHist().at(-1);if(!r||!r.missed.length){app.innerHTML=`<h1>No Missed Questions</h1><p>Nothing to review from the latest full test.</p><button class="btn primary" onclick="home()">Home</button>`;return}
+ app.innerHTML=`<div class="eyebrow">Latest full test</div><h1>Review Missed Questions</h1><p class="sub">Explanations are tied to Packet 2.</p>${r.missed.map(m=>`<div class="missed"><div class="sectionTitle">${SECTIONS[m.sec]} · ${TYPES[m.type]} · Packet p. ${m.page}</div><strong>${esc(m.q)}</strong><p class="small">Your answer: ${esc(m.choice)}<br>Correct answer: <strong>${esc(m.a)}</strong></p><p>${esc(m.exp)}</p></div>`).join("")}<div class="controls"><button class="btn primary" onclick="weakPractice()">Practice Weak Areas</button><button class="btn secondary" onclick="home()">Home</button></div>`;
+}
+function weakPractice(){
+ const h=getHist();if(!h.length){startTypePractice("apply");return}const misses={};Object.keys(SECTIONS).forEach(s=>misses[s]=0);h.slice(-5).forEach(r=>(r.missed||[]).forEach(m=>misses[m.sec]++));
+ const ranked=Object.keys(misses).sort((a,b)=>misses[b]-misses[a]).filter(s=>misses[s]>0);if(!ranked.length){startTypePractice("apply");return}
+ mode="practice";quiz=sh(Q.filter(x=>ranked.slice(0,2).includes(x[0]))).slice(0,15).map(makeItem);idx=0;answers=[];selected=null;checked=false;question();
+}
+function historyView(){
+ const h=getHist(),conf=confidence(h),best=h.length?Math.max(...h.map(r=>r.pct)):null;
+ app.innerHTML=`<div class="eyebrow">Unit 2 · Packet 2</div><h1>Results & Readiness</h1><p class="sub">Only completed 40-question Packet 2 tests appear here.</p>
+ <div class="callout ${conf.ok?"ready":""}"><strong>${conf.ok?"Readiness target reached":"Readiness target"}</strong><br>${conf.msg}${best!==null?`<br>Best score: <strong>${best}%</strong>`:""}</div>
+ ${h.length?`<table class="history"><thead><tr><th>Test</th><th>Date</th><th>Score</th></tr></thead><tbody>${h.slice().reverse().map((r,i)=>`<tr><td>#${h.length-i}</td><td>${new Date(r.ts).toLocaleString()}</td><td><strong>${r.pct}%</strong> (${r.score}/${r.total})</td></tr>`).join("")}</tbody></table>`:`<p>No full tests completed yet.</p>`}
+ <div class="controls"><button class="btn primary" onclick="startTest()">Take Full Test</button><button class="btn secondary" onclick="home()">Home</button>${h.length?`<button class="btn outline" onclick="exportResults()">Export Results</button><button class="btn outline danger" onclick="clearResults()">Clear Results</button>`:""}</div>`;
+}
+function exportResults(){const blob=new Blob([JSON.stringify(getHist(),null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="gibbons_biology_unit2_packet2_results.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)}
+function clearResults(){if(confirm("Clear all saved Packet 2 Full Test results on this browser?")){localStorage.removeItem(key);historyView()}}
+home();
+</script></body></html>
