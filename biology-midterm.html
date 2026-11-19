@@ -168,8 +168,7 @@ function bank(unit="all",type="all"){return Q.filter(x=>(unit==="all"||x[0]===un
 function balancedTest(){let out=[];Object.keys(UNITS).forEach(u=>{let recall=sh(Q.filter(x=>x[0]===u&&x[1]==="recall")).slice(0,4),reasoning=sh(Q.filter(x=>x[0]===u&&x[1]!=="recall")).slice(0,4);out.push(...[...recall,...reasoning].map(makeItem))});return sh(out)}
 function unitName(u){return `${UNITS[u].name}: ${UNITS[u].title}`}
 function home(){mode="";app.innerHTML=`
- <div class="eyebrow">Gibbons Honors Biology</div><h1>Midterm Study Center</h1><p class="sub">Review, practice, and full-test preparation for Units 1-5.</p>
- <div class="hero"><strong>Use retrieval, not rereading.</strong> Review one unit, close the notes, answer from memory, then repair missed ideas with the explanation.</div>
+ <div class="eyebrow">Gibbons Honors Biology</div><h1>Midterm Study Center</h1>
  <div class="unitGrid">${Object.entries(UNITS).map(([u,v])=>`<button class="unitChip" onclick="reviewView('${u}')">${v.name}<small>${v.short}</small></button>`).join("")}</div>
  <div class="grid">
   <button class="choice" onclick="reviewView('all')"><h3>Concept Review</h3><p>Concise guides for every midterm unit.</p></button>
@@ -181,7 +180,7 @@ function home(){mode="";app.innerHTML=`
   <button class="choice wide" onclick="historyView()"><h3>Results and Readiness</h3><p>Track full-test scores, unit performance, and consistency on this browser.</p></button>
  </div>
  <div class="callout"><strong>Readiness target:</strong> two consecutive full tests at 85% or higher, with every unit at 75% or higher.</div>
- <p class="small muted">This is an original study companion. Use your own words for assigned written responses. Existing Unit 1 and Unit 2 results are stored separately.</p>`}
+ `}
 
 function reviewView(unit="all"){
  let units=unit==="all"?Object.keys(UNITS):[unit];
