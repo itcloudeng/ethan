@@ -184,7 +184,7 @@ function home(){mode="";app.innerHTML=`
 
 function reviewView(unit="all"){
  let units=unit==="all"?Object.keys(UNITS):[unit];
- app.innerHTML=`<div class="eyebrow">Concept Review</div><h1>${unit==="all"?"Midterm Review":"${UNITS[unit].name} Review"}</h1><p class="sub">Read for structure, then close this page and explain each idea from memory.</p>
+ app.innerHTML=`<div class="eyebrow">Concept Review</div><h1>${unit==="all"?"Midterm Review":UNITS[unit].name+" Review"}</h1><p class="sub">Read for structure, then close this page and explain each idea from memory.</p>
  ${units.map(u=>`<section><h2>${unitName(u)}</h2><p>${REVIEWS[u].intro}</p>${REVIEWS[u].blocks.map(b=>`<div class="reviewCard"><h3>${b[0]}</h3><ul>${b[1].map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("")}<div class="controls"><button class="btn primary" onclick="startPractice('${u}')">Practice ${UNITS[u].name}</button></div></section>`).join("")}
  <div class="controls"><button class="btn secondary" onclick="home()">Home</button></div>`
 }
