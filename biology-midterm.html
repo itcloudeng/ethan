@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Gibbons Honors Biology interactive midterm study center for Units 1 through 5.">
+<title>Gibbons Honors Biology - Midterm Study Center</title>
+<style>
+:root{--bg:#f5f7f6;--card:#fff;--ink:#17231c;--muted:#647067;--line:#dce5df;--green:#087f43;--green2:#e9f6ef;--navy:#173f63;--gold:#e5b82e;--bad:#b42318;--badbg:#fff1f0}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5}
+button,select{font:inherit}.shell{width:min(920px,100%);margin:auto;padding:22px 16px 50px}.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 8px 28px rgba(18,48,31,.06)}
+.logo{position:absolute;right:18px;top:16px;width:54px;height:54px;object-fit:contain;opacity:.9}.eyebrow{color:var(--green);font-size:.8rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase;margin:0 70px 5px 0}
+h1{font-size:clamp(1.6rem,4.5vw,2.3rem);line-height:1.15;margin:0 70px 7px 0}h2{font-size:1.35rem;margin:24px 0 10px}h3{margin:0 0 5px}.sub,.muted{color:var(--muted)}.sub{margin:0 70px 22px 0}
+.hero{border:1px solid #cce2d4;background:linear-gradient(135deg,#f5fbf7,#eef7f2);border-radius:15px;padding:16px;margin:16px 0}.hero strong{color:var(--green)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.choice{border:1px solid var(--line);border-radius:14px;padding:17px;background:#fff;cursor:pointer;text-align:left;transition:border-color .15s,transform .15s}.choice:hover{border-color:#91b49e;transform:translateY(-1px)}.choice p{margin:0;color:var(--muted);font-size:.92rem}.choice.wide{grid-column:1/-1}
+.unitGrid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:16px 0}.unitChip{border:1px solid var(--line);border-radius:12px;padding:12px 8px;background:#fff;text-align:center;cursor:pointer;font-weight:800}.unitChip small{display:block;color:var(--muted);font-weight:500;margin-top:3px}.unitChip:hover{border-color:var(--green)}
+.btn{border:0;border-radius:11px;padding:12px 16px;font-weight:760;cursor:pointer;touch-action:manipulation}.primary{background:var(--green);color:#fff}.secondary{background:#edf2ef;color:var(--ink)}.outline{background:#fff;border:1px solid var(--line)}.danger{color:var(--bad)}.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.controls .btn{min-width:120px}.btn:disabled{opacity:.5;cursor:not-allowed}
+.top{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;padding-right:64px;min-height:48px}.pill{background:#eef3f0;border-radius:999px;padding:7px 11px;font-size:.88rem;font-weight:720}.progress{height:9px;background:#e8eeea;border-radius:99px;overflow:hidden;margin:14px 0 22px}.progress>div{height:100%;background:var(--green)}
+.sectionTitle{font-size:.82rem;color:var(--green);font-weight:850;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}.q{font-size:1.18rem;font-weight:780;margin:0 0 16px}.answers{display:grid;gap:10px}.option{width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:13px;padding:14px 15px;font-size:1rem;cursor:pointer}.option.sel{border-color:var(--green);background:var(--green2)}.option.correct{border-color:var(--green);background:var(--green2)}.option.wrong{border-color:var(--bad);background:var(--badbg)}
+.feedback{margin-top:14px;padding:12px 14px;border-radius:12px;background:#f5f8f6}.feedback.good{background:var(--green2)}.feedback.bad{background:var(--badbg)}
+.reviewCard{border:1px solid var(--line);border-radius:14px;padding:17px;margin:12px 0}.reviewCard h3{color:var(--navy)}.reviewCard ul{margin:9px 0 0;padding-left:22px}.reviewCard li{margin:5px 0}.equation{font-weight:760;background:#f5f8f6;border-radius:10px;padding:10px 12px;margin:8px 0;overflow-wrap:anywhere}.compare{width:100%;border-collapse:collapse;margin-top:10px}.compare th,.compare td{text-align:left;border-bottom:1px solid var(--line);padding:9px 7px;vertical-align:top}.compare th{color:var(--muted);font-size:.88rem}
+.callout{border-left:4px solid var(--gold);background:#fffaf0;padding:12px 14px;border-radius:8px;margin:14px 0}.ready{border-left-color:var(--green);background:var(--green2)}.score{font-size:3rem;font-weight:850;line-height:1;margin:12px 0}.mastery{padding:14px;border:1px solid var(--line);border-radius:13px;margin:10px 0}.mastery strong{display:flex;justify-content:space-between;gap:12px}.bar{height:8px;background:#e8eeea;border-radius:99px;overflow:hidden;margin-top:8px}.bar i{display:block;height:100%;background:var(--green)}
+.history{width:100%;border-collapse:collapse;margin-top:12px}.history th,.history td{text-align:left;border-bottom:1px solid var(--line);padding:10px 6px;font-size:.92rem}.history th{color:var(--muted)}.reviewItem{border-top:1px solid var(--line);padding:14px 0}.reviewItem:first-child{border-top:0}
+.fr{border:1px solid var(--line);border-radius:14px;padding:17px;margin:12px 0}.fr p{margin:7px 0}.rubric{background:#f5f8f6;border-radius:10px;padding:11px 13px;margin-top:10px}.rubric strong{color:var(--green)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}select{border:1px solid var(--line);border-radius:10px;padding:11px;background:#fff;min-width:190px}.small{font-size:.88rem}
+@media(max-width:760px){.unitGrid{grid-template-columns:repeat(2,1fr)}.unitGrid .unitChip:last-child{grid-column:1/-1}}
+@media(max-width:620px){body{background:#fff}.shell{padding:0}.card{min-height:100dvh;border:0;border-radius:0;box-shadow:none;padding:19px 15px 32px}.logo{width:42px;height:42px;right:12px;top:12px}h1{margin-right:56px}.sub{margin-right:52px}.grid{grid-template-columns:1fr}.choice.wide{grid-column:auto}.top{padding-right:50px}.controls{display:grid;grid-template-columns:1fr}.controls .btn{width:100%}.option{min-height:56px}.history th:nth-child(2),.history td:nth-child(2){display:none}.compare{font-size:.91rem}}
+</style>
+</head>
+<body><div class="shell"><main class="card"><img class="logo" id="gibbonsLogo" alt="Gibbons logo"><div id="app"></div></main></div>
+<script>
+const UNITS={
+ u1:{name:"Unit 1",title:"Biology and Scientific Investigation",short:"Scientific method"},
+ u2:{name:"Unit 2",title:"Biomolecules and Enzymes",short:"Biochemistry"},
+ u3:{name:"Unit 3",title:"Cells and Transport",short:"Cells"},
+ u4:{name:"Unit 4",title:"Cell Energy",short:"Energy"},
+ u5:{name:"Unit 5",title:"DNA and Protein Synthesis",short:"Genetics"}
+};
+const TYPES={recall:"Knowledge",apply:"Application",data:"Graph / Data"};
+const REVIEWS={
+u1:{
+ intro:"Biology studies living systems and uses evidence to test explanations.",
+ blocks:[
+  ["Characteristics of Life",["Living things are made of cells, obtain and use energy, maintain homeostasis, grow and develop, reproduce, respond to stimuli, and pass hereditary information.","A single example can show more than one characteristic. A lizard moving into shade shows response to stimuli and homeostasis."]],
+  ["Experimental Design",["Independent variable: the factor deliberately changed.","Dependent variable: the measured response.","Constants: conditions kept the same.","Control group: the baseline that does not receive the tested treatment.","A strong hypothesis predicts a direction and gives a biological reason."]],
+  ["Data and Graphs",["Quantitative data use numbers; qualitative data describe qualities.","Use a line graph for continuous change over time and a bar graph for categories.","Place the independent variable on the X-axis and the dependent variable on the Y-axis.","A conclusion should use data and discuss whether the evidence supports the hypothesis."]]
+ ]
+},
+u2:{
+ intro:"Chemical structure explains how water, biomolecules, and enzymes behave in cells.",
+ blocks:[
+  ["Water and Bonds",["Covalent bonds share electrons within a molecule. Hydrogen bonds are weaker attractions between nearby polar molecules.","Water's polarity supports cohesion, adhesion, temperature stability, and its ability to dissolve many ionic and polar substances.","A solution below pH 7 is acidic; above pH 7 is basic."]],
+  ["Four Biomolecules",["Carbohydrates: monosaccharides; fast energy and plant structure.","Lipids: glycerol and fatty acids; long-term energy, insulation, membranes, and some hormones.","Proteins: amino acids; enzymes, structure, transport, signaling, and movement.","Nucleic acids: nucleotides; DNA and RNA store or use genetic information."]],
+  ["Enzymes",["Enzymes lower activation energy and are not consumed by the reaction.","A substrate binds to a specifically shaped active site.","Temperature and pH affect enzyme shape and collision rate. Extreme conditions can denature the active site.","The optimum is the condition with the greatest measured activity among those tested."]]
+ ]
+},
+u3:{
+ intro:"Cells divide labor among structures and regulate movement across a selectively permeable membrane.",
+ blocks:[
+  ["Cell Types",["All cells have a plasma membrane, cytoplasm, DNA, and ribosomes.","Prokaryotes lack a nucleus and membrane-bound organelles. Eukaryotes have them.","Plant cells have a cell wall, chloroplasts, and a large central vacuole; animal cells do not."]],
+  ["Organelle Logic",["Nucleus stores DNA; ribosomes build proteins; rough ER folds and routes proteins; Golgi modifies and packages them.","Mitochondria perform aerobic respiration. Chloroplasts perform photosynthesis.","Lysosomes digest materials; vacuoles store materials; the plasma membrane controls entry and exit."]],
+  ["Membrane Transport",["Simple and facilitated diffusion move down a concentration gradient without ATP.","Osmosis is the movement of water toward the side with higher solute concentration.","Active transport can move solutes against the gradient and requires energy.","Hypotonic: water enters. Hypertonic: water exits. Isotonic: no net water movement."]]
+ ]
+},
+u4:{
+ intro:"Photosynthesis stores light energy in sugar, while respiration transfers sugar's energy to ATP.",
+ blocks:[
+  ["ATP and Overall Equations",["ATP is the immediately usable energy currency for cellular work.","Photosynthesis: 6 CO2 + 6 H2O + light -> C6H12O6 + 6 O2.","Respiration: C6H12O6 + 6 O2 -> 6 CO2 + 6 H2O + ATP.","Matter cycles between these processes, but energy flows through the system and eventually leaves as heat."]],
+  ["Photosynthesis",["Light-dependent reactions occur in thylakoid membranes, split water, release O2, and make ATP and NADPH.","The Calvin cycle occurs in the stroma and uses CO2, ATP, and NADPH to build G3P for sugar production."]],
+  ["Respiration and Fermentation",["Glycolysis occurs in cytoplasm and makes 2 pyruvate, net 2 ATP, and NADH.","The Krebs cycle releases CO2 and loads electron carriers.","The electron transport chain makes most ATP; oxygen is the final electron acceptor.","Fermentation regenerates NAD+ so glycolysis can continue when oxygen is unavailable."]]
+ ]
+},
+u5:{
+ intro:"DNA stores information, cells copy it before division, and selected genes are expressed as RNA and protein.",
+ blocks:[
+  ["DNA and RNA",["A nucleotide contains a phosphate, five-carbon sugar, and nitrogenous base.","DNA uses deoxyribose and thymine and is usually double-stranded. RNA uses ribose and uracil and is usually single-stranded.","DNA base pairing is A-T and C-G. RNA pairs A-U and C-G."]],
+  ["Replication",["The two DNA strands separate and each original strand serves as a template.","Replication is semiconservative: each new DNA molecule contains one original strand and one newly made strand."]],
+  ["Protein Synthesis",["Transcription uses a DNA template to make mRNA in the nucleus.","Translation occurs at a ribosome. The ribosome reads mRNA codons, and tRNA anticodons deliver amino acids.","A secreted protein follows: DNA -> mRNA -> ribosome/rough ER -> Golgi -> vesicle -> exocytosis."]]
+ ]
+}
+};
+const Q=[
+// Unit 1
+["u1","recall","Which variable is deliberately changed by the investigator?","independent variable",["dependent variable","constant","control group"],"The independent variable is the one factor the investigator changes."],
+["u1","recall","Which variable is measured as the response in an experiment?","dependent variable",["independent variable","constant","experimental treatment"],"The dependent variable is the measured outcome."],
+["u1","apply","A student changes fertilizer amount and records plant height after 14 days. What is the dependent variable?","plant height after 14 days",["fertilizer amount","plant species","amount of soil"],"Plant height is the measured response."],
+["u1","apply","Why does a well-designed experiment include a control group?","It provides a baseline for comparison.",["It guarantees the hypothesis is correct.","It changes every variable at once.","It removes the need for repeated trials."],"A control provides a baseline that helps isolate the effect of the independent variable."],
+["u1","recall","Which is quantitative data?","The plant grew 4.2 cm.",["The leaf was dark green.","The solution smelled sweet.","The cells looked round."],"Quantitative data are expressed with numbers and units."],
+["u1","recall","Which graph is usually best for showing plant height measured each week?","line graph",["bar graph","circle diagram","classification key"],"A line graph shows continuous change over time."],
+["u1","data","On a graph testing light intensity's effect on photosynthesis rate, what belongs on the X-axis?","light intensity",["photosynthesis rate","the conclusion","the control group's final value only"],"The independent variable belongs on the X-axis."],
+["u1","data","Three groups average 8 cm, 12 cm, and 10 cm of growth. Which statement is supported?","The second group had the greatest average growth.",["All groups grew equally.","The first group had the greatest growth.","The experiment proves why the second group grew most."],"Twelve centimeters is the greatest reported average; the data alone do not prove the mechanism."],
+["u1","apply","A lizard moves into shade when a rock becomes hot. Which two life characteristics are most directly shown?","response to stimuli and homeostasis",["reproduction and heredity","growth and cellular organization","evolution and reproduction"],"The lizard detects heat and acts to maintain a workable internal temperature."],
+["u1","apply","Which hypothesis is most testable?","If light intensity increases within a usable range, then photosynthesis rate will increase because more light energy is available.",["Plants like light.","Photosynthesis is interesting.","Light might do something to plants."],"A testable hypothesis identifies variables, predicts a direction, and gives a reason."],
+["u1","data","Repeated trials give 18, 19, 18, and 20 bubbles per minute. Why are repeats useful?","They reduce the effect of chance variation.",["They change the independent variable.","They eliminate the need for constants.","They guarantee a perfect conclusion."],"Repeated trials make results more reliable by reducing the influence of chance."],
+["u1","apply","Which should be kept constant when testing how temperature affects catalase activity?","the amount of catalase used",["temperature","reaction rate","the final conclusion"],"Catalase amount is a controlled condition; temperature is the independent variable."],
+
+// Unit 2
+["u2","recall","A hydrogen bond in water is best described as:","a weak attraction between partial charges on nearby molecules",["equal electron sharing within one water molecule","electron transfer that creates ions","a peptide bond between amino acids"],"Hydrogen bonds form between partial charges on nearby polar molecules."],
+["u2","apply","Water beads on a waxy surface mainly because water molecules attract one another. This property is:","cohesion",["adhesion","denaturation","hydrolysis"],"Cohesion is attraction between molecules of the same substance."],
+["u2","recall","The monomers of proteins are:","amino acids",["nucleotides","monosaccharides","fatty acids only"],"Proteins are polymers built from amino acids."],
+["u2","recall","Which pairing is correct?","nucleic acid - nucleotide",["protein - nucleotide","carbohydrate - amino acid","lipid - monosaccharide"],"Nucleotides are the building blocks of DNA and RNA."],
+["u2","apply","Iodine turns a potato sample blue-black. What does this indicate?","starch is present",["protein is present","lipid is absent","the sample is strongly basic"],"A blue-black iodine result is positive for starch, a carbohydrate."],
+["u2","recall","Enzymes speed reactions by lowering:","activation energy",["atomic number","the amount of product possible","body temperature"],"A catalyst lowers the activation-energy barrier."],
+["u2","apply","Why can an enzyme usually be reused?","It is not consumed by the reaction.",["It becomes part of every product.","It changes into ATP.","It permanently binds the substrate."],"Products leave the active site, while the enzyme remains available."],
+["u2","apply","An enzyme has almost no activity at pH 2 but works well at pH 7. What is the best explanation?","The acidic condition changed interactions that maintain the active site's shape.",["The enzyme became a carbohydrate.","The substrate gained an atomic number.","pH 2 always freezes molecules."],"Extreme pH can alter enzyme shape and reduce substrate binding or catalysis."],
+["u2","data","Catalase produces 18 mL at 20 C, 34 mL at 35 C, and 9 mL at 60 C. What is the optimum among the tested temperatures?","35 C",["20 C","60 C","It cannot be estimated from these data."],"The greatest measured activity occurs at 35 C."],
+["u2","data","Why might enzyme activity drop sharply above its optimum temperature?","The enzyme may denature and its active site may change shape.",["The enzyme gains more substrate.","All molecules stop moving.","The products become reactants."],"High temperature can disrupt the interactions that maintain enzyme shape."],
+["u2","recall","Which biomolecule is a major component of cell membranes?","phospholipid",["starch","DNA","glycogen only"],"Phospholipids form the membrane bilayer."],
+["u2","apply","Which food-test result indicates protein?","Biuret changes to lilac or purple.",["Iodine becomes blue-black.","Brown paper remains translucent.","Benedict's remains blue after heating."],"A purple Biuret result is positive for protein."],
+
+// Unit 3
+["u3","recall","Which structures are found in prokaryotic and eukaryotic cells?","plasma membrane, cytoplasm, DNA, and ribosomes",["nucleus, Golgi, and mitochondria","chloroplasts and a central vacuole","rough ER and lysosomes"],"All cells share a membrane, cytoplasm, genetic material, and ribosomes."],
+["u3","recall","Which structure directly builds proteins?","ribosome",["lysosome","vacuole","cell wall"],"Ribosomes assemble amino acids into proteins."],
+["u3","apply","A gland cell secretes large amounts of protein hormone. Which pathway should be especially active?","ribosome -> rough ER -> Golgi -> vesicle",["nucleus -> lysosome -> chloroplast","Golgi -> DNA -> ribosome","mitochondrion -> cell wall -> nucleus"],"Secreted proteins are built on ribosomes, processed in rough ER and Golgi, then carried in vesicles."],
+["u3","apply","A cell with many mitochondria is most likely specialized for:","high ATP demand",["DNA storage","water storage","cell wall production"],"Mitochondria transfer energy from food to ATP."],
+["u3","recall","Which substance crosses the phospholipid bilayer most easily without a transport protein?","a small nonpolar molecule",["a sodium ion","a large polar molecule","a large protein"],"Small nonpolar molecules can dissolve in the bilayer's hydrophobic interior."],
+["u3","recall","Facilitated diffusion differs from simple diffusion because facilitated diffusion:","uses a membrane protein",["requires ATP","moves against the gradient","moves only water"],"Both are passive, but facilitated diffusion uses a channel or carrier protein."],
+["u3","apply","Which process can move a solute from low to high concentration?","active transport",["osmosis","simple diffusion","facilitated diffusion"],"Moving against a concentration gradient requires energy and a transport protein."],
+["u3","apply","An animal cell shrivels in a solution. The solution is most likely:","hypertonic",["hypotonic","isotonic","distilled water"],"In a hypertonic solution, water leaves the cell by osmosis."],
+["u3","apply","A plant cell placed in a hypotonic solution generally becomes:","turgid",["plasmolyzed","unchanged because water cannot cross","unable to use osmosis"],"Water enters, and the wall prevents bursting while turgor pressure rises."],
+["u3","data","A cell is 20% solute and is placed in 30% solute solution. What is the net water movement?","out of the cell",["into the cell","no net movement","solute becomes water"],"Water moves toward the side with the higher solute concentration."],
+["u3","recall","Endocytosis and exocytosis both:","use energy to move large materials in vesicles",["are forms of simple diffusion","move only water","occur without the plasma membrane"],"Bulk transport uses vesicles and cellular energy."],
+["u3","apply","Why does oxygen cross a membrane more easily than glucose?","Oxygen is smaller and nonpolar.",["Oxygen always uses ATP.","Glucose is a gas.","The membrane is made of glucose."],"The bilayer's interior favors small nonpolar molecules."],
+
+// Unit 4
+["u4","recall","What is ATP's main cellular role?","It provides immediately usable energy for cell work.",["It stores hereditary information.","It forms the cell wall.","It replaces all enzymes."],"ATP couples energy release to cellular work."],
+["u4","recall","Which equation summarizes photosynthesis?","carbon dioxide + water + light -> glucose + oxygen",["glucose + oxygen -> carbon dioxide + water + ATP","oxygen + ATP -> DNA + water","protein + water -> amino acids + light"],"Photosynthesis uses CO2 and water to build sugar, releasing oxygen."],
+["u4","recall","The oxygen released during photosynthesis comes from:","water split during the light-dependent reactions",["carbon dioxide split during glycolysis","glucose split in the Calvin cycle","ATP broken in mitochondria"],"Water is split in the light-dependent reactions, releasing O2."],
+["u4","recall","Where does the Calvin cycle occur?","chloroplast stroma",["thylakoid membrane","mitochondrial matrix","cytoplasm"],"The Calvin cycle occurs in the stroma."],
+["u4","apply","A plant has light and water but no carbon dioxide. Which process is directly limited?","building sugar in the Calvin cycle",["splitting water in light reactions","glycolysis in all cells","oxygen accepting electrons in mitochondria"],"CO2 provides the carbon used to build G3P and sugars."],
+["u4","recall","Where does glycolysis occur?","cytoplasm",["chloroplast stroma","mitochondrial matrix only","nucleus"],"Glycolysis occurs in the cytoplasm."],
+["u4","recall","Most ATP in aerobic respiration is produced by the:","electron transport chain",["Calvin cycle","fermentation pathway","first split of glucose alone"],"Oxidative phosphorylation at the electron transport chain produces most ATP."],
+["u4","apply","Why does the electron transport chain depend on oxygen?","Oxygen is the final electron acceptor.",["Oxygen is converted directly into glucose.","Oxygen builds ribosomes.","Oxygen is the enzyme's active site."],"Without a final electron acceptor, the chain backs up and ATP production falls."],
+["u4","recall","Fermentation is useful because it:","regenerates NAD+ so glycolysis can continue",["makes oxygen","produces more ATP than respiration","occurs in chloroplasts"],"Glycolysis needs NAD+, and fermentation restores it when oxygen is limited."],
+["u4","apply","If oxygen suddenly becomes unavailable, which change happens first in aerobic respiration?","The electron transport chain stops accepting electrons normally.",["The Calvin cycle speeds up in mitochondria.","DNA replication doubles.","The cell wall dissolves."],"Oxygen is the final electron acceptor, so the chain cannot continue normally without it."],
+["u4","data","A yeast culture makes more CO2 after glucose is added without oxygen. Which process explains the CO2?","alcoholic fermentation",["lactic acid fermentation","Calvin cycle","DNA replication"],"Yeast alcoholic fermentation releases carbon dioxide and ethanol."],
+["u4","apply","Which statement best connects photosynthesis and respiration?","Their overall matter equations are largely reverse, while energy changes form and flows through the system.",["They have identical purposes.","Both occur only in plants.","Both require light at every step."],"Products of one process can serve as reactants of the other, but energy is not recycled."],
+
+// Unit 5
+["u5","recall","A nucleotide contains:","a phosphate, a five-carbon sugar, and a nitrogenous base",["glycerol and fatty acids","two amino acids","glucose and oxygen"],"These three parts make a DNA or RNA nucleotide."],
+["u5","recall","Which molecule contains uracil?","RNA",["DNA","a lipid","a carbohydrate"],"RNA uses uracil where DNA uses thymine."],
+["u5","recall","During DNA replication, a template sequence C G T A pairs with:","G C A T",["G C U A","C G T A","A T G C"],"DNA pairing rules are C-G and A-T."],
+["u5","recall","Why is DNA replication called semiconservative?","Each new DNA molecule contains one original strand and one new strand.",["Half the genes are deleted.","Only half the DNA is copied.","RNA replaces one DNA strand permanently."],"Each daughter double helix conserves one parental strand."],
+["u5","recall","Transcription produces:","mRNA from a DNA template",["DNA from protein","protein directly from DNA","ATP from glucose"],"RNA polymerase uses DNA as a template to build RNA."],
+["u5","recall","During translation, the anticodon is found on:","tRNA",["DNA","mRNA","the cell membrane"],"A tRNA anticodon pairs with an mRNA codon."],
+["u5","apply","A DNA template sequence T A C G G A A A T is transcribed into:","A U G C C U U U A",["A T G C C T T T A","U A C G G A A A U","T A C G G A A A T"],"During transcription, RNA bases pair with the DNA template using A-U and C-G."],
+["u5","apply","Which sequence correctly traces a secreted protein?","DNA -> mRNA -> ribosome/rough ER -> Golgi -> vesicle",["nucleus -> lysosome -> chloroplast","Golgi -> DNA -> ribosome","mitochondrion -> nucleus -> membrane"],"Gene information is transcribed, translated, processed, packaged, and exported."],
+["u5","apply","A base substitution changes an mRNA codon but not the amino acid. The mutation is:","silent",["certain to destroy the protein","a deletion","a chromosome duplication"],"Because more than one codon can specify the same amino acid, some substitutions are silent."],
+["u5","apply","How can one changed amino acid reduce enzyme function?","It can alter folding or the active site's shape.",["It always changes RNA into DNA.","It removes every chromosome.","It makes the substrate radioactive."],"Amino-acid sequence influences protein folding, shape, and function."],
+["u5","data","A mutation creates a stop codon near the beginning of a gene. What is the most likely result?","A shortened protein is produced.",["A longer chromosome forms.","Translation never begins for any gene.","The protein automatically gains ATP."],"A premature stop codon ends translation early."],
+["u5","recall","Which RNA forms part of the ribosome and helps catalyze protein assembly?","rRNA",["mRNA","tRNA","DNA"],"Ribosomal RNA is a structural and catalytic part of the ribosome."],
+];
+
+const FR=[
+ ["Experimental Design","Design an experiment testing how temperature affects catalase activity.","Include a directional hypothesis, independent and dependent variables, a control or baseline, at least two constants, repeated trials, and the quantitative data you would collect."],
+ ["Osmosis and Tonicity","A freshwater organism is moved into saltwater. Predict what happens to its cells and explain why.","Identify saltwater as hypertonic relative to the cells, state that water moves out by osmosis toward higher solute concentration, and connect water loss to cell shrinkage and disrupted function."],
+ ["Matter and Energy","Compare how a leaf cell uses chloroplasts and mitochondria during a sunny day.","Explain the inputs and outputs of both processes. Distinguish matter cycling from energy flow from light to chemical energy, ATP, and heat."],
+ ["Gene to Trait","A mutation changes one DNA base in a gene. Trace how it could affect cell function.","Connect DNA to mRNA, codons, amino-acid sequence, protein folding or active-site shape, and function. Explain why a substitution might be silent or occur outside a critical region."]
+];
+
+let mode="",quiz=[],idx=0,answers=[],selected=null,checked=false,currentUnit="all";
+const app=document.getElementById("app"),key="gibbonsBioMidterm2026ResultsV1";
+function sh(a){let b=[...a];for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
+function makeItem(x){return {unit:x[0],type:x[1],q:x[2],a:x[3],exp:x[5],opts:sh([x[3],...x[4]])}}
+function getHist(){try{return JSON.parse(localStorage.getItem(key)||"[]")}catch(e){return[]}}
+function bank(unit="all",type="all"){return Q.filter(x=>(unit==="all"||x[0]===unit)&&(type==="all"||x[1]===type))}
+function balancedTest(){let out=[];Object.keys(UNITS).forEach(u=>{let recall=sh(Q.filter(x=>x[0]===u&&x[1]==="recall")).slice(0,4),reasoning=sh(Q.filter(x=>x[0]===u&&x[1]!=="recall")).slice(0,4);out.push(...[...recall,...reasoning].map(makeItem))});return sh(out)}
+function unitName(u){return `${UNITS[u].name}: ${UNITS[u].title}`}
+function home(){mode="";app.innerHTML=`
+ <div class="eyebrow">Gibbons Honors Biology</div><h1>Midterm Study Center</h1><p class="sub">Review, practice, and full-test preparation for Units 1-5.</p>
+ <div class="hero"><strong>Use retrieval, not rereading.</strong> Review one unit, close the notes, answer from memory, then repair missed ideas with the explanation.</div>
+ <div class="unitGrid">${Object.entries(UNITS).map(([u,v])=>`<button class="unitChip" onclick="reviewView('${u}')">${v.name}<small>${v.short}</small></button>`).join("")}</div>
+ <div class="grid">
+  <button class="choice" onclick="reviewView('all')"><h3>Concept Review</h3><p>Concise guides for every midterm unit.</p></button>
+  <button class="choice" onclick="practiceSetup()"><h3>Targeted Practice</h3><p>Choose a unit and question style with immediate feedback.</p></button>
+  <button class="choice" onclick="startApplication()"><h3>Application + Data</h3><p>Mixed scenarios, predictions, and graph/data reasoning.</p></button>
+  <button class="choice" onclick="freeResponseView()"><h3>Free-Response Workshop</h3><p>Four prompts with checklists for planning answers in your own words.</p></button>
+  <button class="choice" onclick="startTest()"><h3>40-Question Midterm</h3><p>Eight questions per unit. No feedback until submission.</p></button>
+  <button class="choice" onclick="weakPractice()"><h3>Practice Weak Areas</h3><p>Targets the unit missed most often on recent full tests.</p></button>
+  <button class="choice wide" onclick="historyView()"><h3>Results and Readiness</h3><p>Track full-test scores, unit performance, and consistency on this browser.</p></button>
+ </div>
+ <div class="callout"><strong>Readiness target:</strong> two consecutive full tests at 85% or higher, with every unit at 75% or higher.</div>
+ <p class="small muted">This is an original study companion. Use your own words for assigned written responses. Existing Unit 1 and Unit 2 results are stored separately.</p>`}
+
+function reviewView(unit="all"){
+ let units=unit==="all"?Object.keys(UNITS):[unit];
+ app.innerHTML=`<div class="eyebrow">Concept Review</div><h1>${unit==="all"?"Midterm Review":"${UNITS[unit].name} Review"}</h1><p class="sub">Read for structure, then close this page and explain each idea from memory.</p>
+ ${units.map(u=>`<section><h2>${unitName(u)}</h2><p>${REVIEWS[u].intro}</p>${REVIEWS[u].blocks.map(b=>`<div class="reviewCard"><h3>${b[0]}</h3><ul>${b[1].map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("")}<div class="controls"><button class="btn primary" onclick="startPractice('${u}')">Practice ${UNITS[u].name}</button></div></section>`).join("")}
+ <div class="controls"><button class="btn secondary" onclick="home()">Home</button></div>`
+}
+
+function practiceSetup(){app.innerHTML=`<div class="eyebrow">Targeted Practice</div><h1>Choose Your Focus</h1><p class="sub">Practice shows feedback after every answer and does not affect full-test history.</p>
+ <div class="row"><select id="unit"><option value="all">All Units</option>${Object.entries(UNITS).map(([u,v])=>`<option value="${u}">${v.name}: ${v.short}</option>`).join("")}</select>
+ <select id="type"><option value="all">All Question Styles</option>${Object.entries(TYPES).map(([k,v])=>`<option value="${k}">${v}</option>`).join("")}</select>
+ <select id="cnt"><option>10</option><option selected>15</option><option>20</option><option>25</option></select></div>
+ <div class="controls"><button class="btn primary" onclick="startPractice()">Start Practice</button><button class="btn secondary" onclick="home()">Back</button></div>`}
+
+function startPractice(unitOverride=null,typeOverride=null){
+ mode="practice";currentUnit=unitOverride||document.getElementById("unit")?.value||"all";let type=typeOverride||document.getElementById("type")?.value||"all";let b=bank(currentUnit,type),n=unitOverride?Math.min(12,b.length):Math.min(+(document.getElementById("cnt")?.value||15),b.length);
+ if(!b.length){practiceSetup();return}quiz=sh(b).slice(0,n).map(makeItem);idx=0;answers=[];selected=null;checked=false;question()
+}
+function startApplication(){mode="practice";currentUnit="all";quiz=sh(Q.filter(x=>x[1]!=="recall")).slice(0,20).map(makeItem);idx=0;answers=[];selected=null;checked=false;question()}
+function startTest(){mode="test";quiz=balancedTest();idx=0;answers=[];selected=null;checked=false;question()}
+function question(){let x=quiz[idx],answered=answers.filter(Boolean).length;app.innerHTML=`
+ <div class="top"><span class="pill">${mode==="test"?"Full Midterm":"Practice"}</span><span class="pill">Question ${idx+1} of ${quiz.length}</span></div>
+ <div class="progress"><div style="width:${idx/quiz.length*100}%"></div></div>
+ <div class="sectionTitle">${unitName(x.unit)} - ${TYPES[x.type]}</div><div class="q">${esc(x.q)}</div>
+ <div class="answers">${x.opts.map((o,i)=>`<button class="option ${selected===o?"sel":""}" onclick="pick(${i})">${String.fromCharCode(65+i)}. ${esc(o)}</button>`).join("")}</div><div id="fb"></div>
+ <div class="controls">${mode==="practice"?`<button id="check" class="btn primary" onclick="checkPractice()" ${selected===null?"disabled":""}>Check Answer</button>`:`<button class="btn secondary" onclick="prev()" ${idx===0?"disabled":""}>Previous</button><button class="btn primary" onclick="nextTest()">${idx===quiz.length-1?"Review and Submit":"Next"}</button>`}<button class="btn outline" onclick="home()">Quit</button></div>
+ ${mode==="test"?`<p class="small muted">${answered} of ${quiz.length} answered. You can change answers before submitting.</p>`:""}`;
+ if(mode==="test"&&answers[idx]){selected=answers[idx].choice;highlightSelected()}}
+function highlightSelected(){[...document.querySelectorAll(".option")].forEach((b,i)=>b.classList.toggle("sel",quiz[idx].opts[i]===selected))}
+function pick(i){if(mode==="practice"&&checked)return;selected=quiz[idx].opts[i];highlightSelected();let c=document.getElementById("check");if(c)c.disabled=false;if(mode==="test")answers[idx]={choice:selected}}
+function checkPractice(){if(selected===null)return;checked=true;let x=quiz[idx],ok=selected===x.a;answers[idx]={choice:selected,ok};[...document.querySelectorAll(".option")].forEach((b,i)=>{let o=x.opts[i];if(o===x.a)b.classList.add("correct");else if(o===selected)b.classList.add("wrong");b.disabled=true});document.getElementById("fb").innerHTML=`<div class="feedback ${ok?"good":"bad"}"><strong>${ok?"Correct.":"Not quite."}</strong> ${esc(x.exp)}</div>`;document.querySelector(".controls").innerHTML=`<button class="btn primary" onclick="nextPractice()">${idx===quiz.length-1?"See Results":"Next Question"}</button><button class="btn outline" onclick="home()">Quit</button>`}
+function nextPractice(){if(idx===quiz.length-1)return practiceResult();idx++;selected=null;checked=false;question()}
+function practiceResult(){let n=answers.filter(a=>a?.ok).length;app.innerHTML=`<div class="eyebrow">Practice Complete</div><h1>Practice Result</h1><div class="score">${Math.round(n/quiz.length*100)}%</div><p>${n} of ${quiz.length} correct.</p><p class="muted">This score is for learning and is not added to full-test history.</p><div class="controls"><button class="btn primary" onclick="practiceSetup()">Practice Again</button><button class="btn secondary" onclick="home()">Home</button></div>`}
+function prev(){if(idx>0){idx--;selected=answers[idx]?.choice||null;question()}}
+function nextTest(){if(selected!==null)answers[idx]={choice:selected};if(idx<quiz.length-1){idx++;selected=answers[idx]?.choice||null;question()}else reviewSubmit()}
+function reviewSubmit(){let unanswered=quiz.length-answers.filter(Boolean).length;app.innerHTML=`<div class="eyebrow">Full Midterm</div><h1>Submit Your Test?</h1><p class="sub">Answers and explanations have not been shown.</p><div class="callout ${unanswered?"":"ready"}"><strong>${unanswered?`${unanswered} question${unanswered>1?"s":""} unanswered.`:"All 40 questions answered."}</strong></div><div class="controls"><button class="btn primary" onclick="submitTest()">Submit Test</button><button class="btn secondary" onclick="backToLast()">Go Back</button></div>`}
+function backToLast(){idx=quiz.length-1;selected=answers[idx]?.choice||null;question()}
+function submitTest(){let per={};Object.keys(UNITS).forEach(u=>per[u]={c:0,n:0});let correct=0,missed=[];quiz.forEach((x,i)=>{let choice=answers[i]?.choice||"No answer",ok=choice===x.a;per[x.unit].n++;if(ok){correct++;per[x.unit].c++}else missed.push({unit:x.unit,type:x.type,q:x.q,a:x.a,choice,exp:x.exp})});let rec={ts:new Date().toISOString(),score:correct,total:quiz.length,pct:Math.round(correct/quiz.length*100),per,missed};let h=getHist();h.push(rec);localStorage.setItem(key,JSON.stringify(h.slice(-50)));resultView(rec)}
+function confidence(h=getHist()){if(h.length<2)return{ok:false,msg:`Complete ${2-h.length} more full test${h.length===1?"":"s"} to build a consistency streak.`};let pass=r=>r.pct>=85&&Object.values(r.per).every(v=>v.n&&v.c/v.n>=.75),a=h[h.length-1],b=h[h.length-2];return pass(a)&&pass(b)?{ok:true,msg:"Two consecutive tests at 85%+ with every unit at 75%+."}:{ok:false,msg:"Target: two consecutive tests at 85%+ with every unit at 75%+."}}
+function resultView(r){let c=confidence();app.innerHTML=`<div class="eyebrow">Full Midterm Result</div><h1>Your Results</h1><div class="score">${r.pct}%</div><p>${r.score} of ${r.total} correct</p><div class="callout ${c.ok?"ready":""}"><strong>${c.ok?"Readiness target reached":"Keep building consistency"}</strong><br>${c.msg}</div>${Object.entries(r.per).map(([u,v])=>{let p=Math.round(v.c/v.n*100);return `<div class="mastery"><strong><span>${unitName(u)}</span><span>${v.c}/${v.n} - ${p}%</span></strong><div class="bar"><i style="width:${p}%"></i></div></div>`}).join("")}<div class="controls"><button class="btn primary" onclick="missedView()">Review Missed Questions</button><button class="btn secondary" onclick="startTest()">Take Another Test</button><button class="btn outline" onclick="home()">Home</button></div>`}
+function missedView(){let h=getHist(),r=h[h.length-1];if(!r||!r.missed.length){app.innerHTML=`<h1>No Missed Questions</h1><p>Nothing to review from the latest full test.</p><button class="btn primary" onclick="home()">Home</button>`;return}app.innerHTML=`<div class="eyebrow">Self-Correction</div><h1>Review Missed Questions</h1><p class="sub">Explain the corrected idea aloud before moving on.</p>${r.missed.map(m=>`<div class="reviewItem"><div class="sectionTitle">${unitName(m.unit)} - ${TYPES[m.type]}</div><strong>${esc(m.q)}</strong><p class="small">Your answer: ${esc(m.choice)}<br>Correct answer: <strong>${esc(m.a)}</strong></p><p>${esc(m.exp)}</p></div>`).join("")}<div class="controls"><button class="btn primary" onclick="weakPractice()">Practice Weak Areas</button><button class="btn secondary" onclick="home()">Home</button></div>`}
+function weakPractice(){let h=getHist();if(!h.length){practiceSetup();return}let misses={};Object.keys(UNITS).forEach(u=>misses[u]=0);h.slice(-5).forEach(r=>r.missed.forEach(m=>misses[m.unit]++));let u=Object.keys(misses).sort((a,b)=>misses[b]-misses[a])[0];if(!misses[u]){practiceSetup();return}startPractice(u)}
+function historyView(){let h=getHist(),c=confidence(h);app.innerHTML=`<div class="eyebrow">Progress</div><h1>Results and Readiness</h1><p class="sub">Only completed 40-question midterms appear here.</p><div class="callout ${c.ok?"ready":""}"><strong>${c.ok?"Readiness target reached":"Readiness target"}</strong><br>${c.msg}</div>${h.length?`<table class="history"><thead><tr><th>Test</th><th>Date</th><th>Score</th></tr></thead><tbody>${h.slice().reverse().map((r,i)=>`<tr><td>#${h.length-i}</td><td>${new Date(r.ts).toLocaleString()}</td><td><strong>${r.pct}%</strong> (${r.score}/${r.total})</td></tr>`).join("")}</tbody></table>`:`<p>No full midterms completed yet.</p>`}<div class="controls"><button class="btn primary" onclick="startTest()">Take Full Midterm</button><button class="btn secondary" onclick="home()">Home</button>${h.length?`<button class="btn outline" onclick="exportResults()">Export Results</button><button class="btn outline danger" onclick="clearResults()">Clear Results</button>`:""}</div>`}
+function exportResults(){let blob=new Blob([JSON.stringify(getHist(),null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="gibbons_biology_midterm_2026_results.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)}
+function clearResults(){if(confirm("Clear all saved midterm results on this browser?")){localStorage.removeItem(key);historyView()}}
+function freeResponseView(){app.innerHTML=`<div class="eyebrow">Written Practice</div><h1>Free-Response Workshop</h1><p class="sub">Plan with the checklist, then write the answer in your own words without copying model wording.</p><div class="callout"><strong>Best method:</strong> answer from memory first. Use the checklist only after you finish, then revise missing science ideas.</div>${FR.map((x,i)=>`<div class="fr"><div class="sectionTitle">Prompt ${i+1} - ${x[0]}</div><h3>${x[1]}</h3><div class="rubric"><strong>Full-credit checklist</strong><p>${x[2]}</p></div></div>`).join("")}<div class="controls"><button class="btn primary" onclick="startApplication()">Practice Application Questions</button><button class="btn secondary" onclick="home()">Home</button></div>`}
+
+fetch("biology-unit1.html").then(r=>r.text()).then(t=>{let m=t.match(/const LOGO="([^"]+)"/);if(m)document.getElementById("gibbonsLogo").src=m[1]}).catch(()=>{});
+home();
+</script>
+</body>
+</html>
