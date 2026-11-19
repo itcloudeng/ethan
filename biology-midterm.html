@@ -185,15 +185,11 @@ function home(){mode="";app.innerHTML=`
  <div class="eyebrow">Gibbons Honors Biology</div><h1>Midterm Study Center</h1>
  <div class="unitGrid">${Object.entries(UNITS).map(([u,v])=>`<button class="unitChip" onclick="reviewView('${u}')">${v.name}<small>${v.short}</small></button>`).join("")}</div>
  <div class="grid">
-  <button class="choice" onclick="reviewView('all')"><h3>Concept Review</h3><p>Concise guides for every midterm unit.</p></button>
   <button class="choice" onclick="practiceSetup()"><h3>Targeted Practice</h3><p>Choose a unit and question style with immediate feedback.</p></button>
-  <button class="choice" onclick="startApplication()"><h3>Application + Data</h3><p>Mixed scenarios, predictions, and graph/data reasoning.</p></button>
   <button class="choice" onclick="freeResponseView()"><h3>Free-Response Workshop</h3><p>Four prompts with checklists for planning answers in your own words.</p></button>
   <button class="choice" onclick="startTest()"><h3>40-Question Midterm</h3><p>Eight questions per unit. No feedback until submission.</p></button>
-  <button class="choice" onclick="weakPractice()"><h3>Practice Weak Areas</h3><p>Targets the unit missed most often on recent full tests.</p></button>
   <button class="choice wide" onclick="historyView()"><h3>Results and Readiness</h3><p>Track full-test scores, unit performance, and consistency on this browser.</p></button>
  </div>
- <div class="callout"><strong>Readiness target:</strong> two consecutive full tests at 85% or higher, with every unit at 75% or higher.</div>
  `}
 
 function reviewView(unit="all"){
